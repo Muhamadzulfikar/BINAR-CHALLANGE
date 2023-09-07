@@ -225,6 +225,10 @@ body {
         width: 100%;
     }
 
+    .height-hero-container{
+        height: 13.5rem;
+    }
+
     .hero-container-left-side {
         padding-left: 8.5rem;
     }
@@ -304,8 +308,24 @@ body {
     }
 
     .footer-container{
-        margin-top: 9.375rem;
+        margin-top: 12.375rem;
         padding-left: 6.125rem;
         padding-right: 0rem;
+    }
+
+    .filter-container{
+        width: 65.4375rem;
+        top: 26.875rem;
+        left: 11.25rem;
+    }
+
+    .filter-container-result{
+        top: 9.5rem;
+        width: 65.4375rem;
+        left: 11.25rem;
+    }
+
+    .list-car-container{
+        margin-top: 10rem;
     }
 }

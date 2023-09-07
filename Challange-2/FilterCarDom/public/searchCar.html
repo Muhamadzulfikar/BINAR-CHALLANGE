@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-container">
+        <div class="container-fluid navbar-padding">
+            <a class="navbar-brand text-uppercase text-dark fw-bold" href="#">Binar Rental Car</a>
+            <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item me-3 pe-3">
+                        <a class="nav-link text-dark" aria-current="page" href="#">Our Service</a>
+                    </li>
+                    <li class="nav-item me-3 pe-3">
+                        <a class="nav-link text-dark" aria-current="page" href="#">Why Us</a>
+                    </li>
+                    <li class="nav-item me-3 pe-3">
+                        <a class="nav-link text-dark" aria-current="page" href="#">Testimonial</a>
+                    </li>
+                    <li class="nav-item me-3 pe-3">
+                        <a class="nav-link text-dark" aria-current="page" href="#">FAQ</a>
+                    </li>
+                    <li class="nav-item me-3 pe-3">
+                        <button class="btn nav-register-button text-white">Register</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-container row">
+        <section class="hero-container-left-side col-sm-12 col-md-6 align-self-center">
+            <h1 class="hero-section-header fw-bold">Sewa & Rental Mobil Terbaik di kawasan Batam</h1>
+            <p class="hero-section-sub-header">Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas
+                terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.
+            </p>
+            <button class="hero-button btn text-white">Mulai Sewa Mobil</button>
+        </section>
+        <section class="col-md-6">
+            <img class="car-image" src="./images/img_car.png" alt="">
+        </section>
+    </section>
+
+    <section class="filter-container p-4 shadow-lg rounded position-absolute bg-white row">
+        <div class="col-md-3 text-center ">
+            <p>Tipe Driver</p>
+            <select class="form-select" id="driver_type" name="driver_type">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select>
+        </div>
+        <div class="col-md-3 text-center">
+            <p>Tanggal</p>
+            <input class=" form-control" type="date" name="date" id="date">
+        </div>
+        <div class="col-md-3 text-center ">
+            <p>Waktu Jemput / Ambil</p>
+            <select class="form-select" id="driver_type" name="driver_type">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select>
+        </div>
+        <div class="col-md-3 text-center">
+            <p>Jumlah Penumpang (optional)</p>
+            <input class="form-control" type="text" name="pessenger" id="pesengger">
+            <div class="text-end mt-3">
+                <button class="btn btn-success">Cari Mobil</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-container row w-100">
+        <section class="footer-address-container col-md-3">
+            <p>Jalan Suroyo No. 161 Mayangan Kota Probolonggo 672000</p>
+            <p>binarcarrental@gmail.com</p>
+            <p>081-233-334-808</p>
+        </section>
+        <section class="footer-navigation-container col-md-3 ps-md-5">
+            <p class="ms-md-2">Our services</p>
+            <p class="ms-md-2">Why Us</p>
+            <p class="ms-md-2">Testimonial</p>
+            <p class="ms-md-2">FAQ</p>
+        </section>
+        <section class="footer-social-media-container col-md-3 ps-md-4">
+            <p class="ms-md-2">Connect with us</p>
+            <section class="footer-social-media-icon">
+                <img src="./images/icon_facebook.png" alt="">
+                <img src="./images/icon_instagram.png" alt="">
+                <img src="./images/icon_twitter.png" alt="">
+                <img src="./images/icon_mail.png" alt="">
+                <img src="./images/icon_twitch.png" alt="">
+            </section>
+        </section>
+        <section class="footer-copyright-container col-md-3 ps-md-5">
+            <p class="ms-md-2">Copyright Binar 2022</p>
+            <div class="footer-copyright-rectangle ms-md-2 rounded"></div>
+        </section>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
