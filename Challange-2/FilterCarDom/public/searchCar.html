@@ -58,10 +58,8 @@
         <div class="col-md-3 text-center ">
             <p>Tipe Driver</p>
             <select class="form-select" id="driver_type" name="driver_type">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                <option value="dengan_sopir">Dengan Sopir</option>
+                <option value="tanpa_sopir">Tanpa Sopir</option>
             </select>
         </div>
         <div class="col-md-3 text-center">
@@ -70,19 +68,40 @@
         </div>
         <div class="col-md-3 text-center ">
             <p>Waktu Jemput / Ambil</p>
-            <select class="form-select" id="driver_type" name="driver_type">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+            <select class="form-select" id="time" name="time">
+                <option value="08:00">08:00</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="12:00">12:00</option>
             </select>
         </div>
         <div class="col-md-3 text-center">
             <p>Jumlah Penumpang (optional)</p>
-            <input class="form-control" type="text" name="pessenger" id="pesengger">
+            <input class="form-control" type="text" name="pessenger" id="pessenger">
             <div class="text-end mt-3">
-                <button class="btn btn-success">Cari Mobil</button>
+                <button id="search-car" class="btn btn-success">Cari Mobil</button>
             </div>
+        </div>
+    </section>
+
+    <section id="container-car" class="container mx-auto row list-car-container d-none">
+        <!-- <div id="card-car" class="col-md-4 mb-4 rounded">
+            <div class="card border-0">
+                <img src="./images/car01.min.jpg" style="height:13.875rem; object-fit: cover;" class="card-img-top"
+                    alt="...">
+                <div class="card-body">
+                    <p class="card-text">Nama / Tipe Mobil</p>
+                    <h5 class="card-title">Rp 430.000 / hari</h5>
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.
+                    </p>
+                    <p><i class="fa fa-users" aria-hidden="true"></i> 4 Orang</p>
+                    <p><i class="fa fa-cog" aria-hidden="true"></i> Manual</p>
+                    <p><i class="fa fa-calendar-o" aria-hidden="true"></i> Tahun 2020</p>
+                    <btn class="btn btn-success w-100">Pilih Mobil</b>
+                </div>
+            </div> -->
         </div>
     </section>
 
@@ -119,6 +138,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js"
         integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa"
         crossorigin="anonymous"></script>
+        <script type="text/javascript" src="./scripts/binar.js"></script>
+        <script type="text/javascript" src="./scripts/app.example.js"></script>
+        <script type="text/javascript" src="./scripts/car.example.js"></script>
+        <script type="text/javascript" src="./scripts/main.example.js"></script>
 </body>
 
 </html>
