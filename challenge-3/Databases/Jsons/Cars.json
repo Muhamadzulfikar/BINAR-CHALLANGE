@@ -1,0 +1,103 @@
+[
+    {
+      "id": 1,
+      "uuid": "6e2bc663-5197-441a-957b-bc75e4a2da7c",
+      "image": "./images/car01.min.jpg",
+      "rentPerDay": 200000,
+      "capacity": 2,
+      "description": " Brake assist. Leather-wrapped shift knob. Glove box lamp. Air conditioning w/in-cabin microfilter.",
+      "availableAt": "2022-03-23T15:49:05.563Z"
+    },
+    {
+      "id": 2,
+      "uuid": "bf6b5c43-1377-4ae0-8908-310c64266f81",
+      "model": "MKZ",
+      "image": "./images/car03.min.jpg",
+      "rentPerDay": 900000,
+      "capacity": 6,
+      "description": " Driver & front passenger map pockets. Direct-type tire pressure monitor system. Cargo area lamp. Glove box lamp.",
+      "availableAt": "2022-03-23T15:49:05.563Z"
+    },
+    {
+      "id": 3,
+      "uuid": "3eead6db-c536-406b-9bc5-85d4c6e38a76",
+      "image": "./images/car06.min.jpg",
+      "rentPerDay": 900000,
+      "capacity": 4,
+      "description": " Tilt steering column. Carpeted cargo area. Tip start system. Leather-wrapped shift knob.",
+      "availableAt": "2022-03-23T15:49:05.563Z"
+    },
+    {
+      "id": 4,
+      "uuid": "752685ce-dd39-40e5-9af5-93fdd36dea7e",
+      "image": "./images/car07.min.jpg",
+      "rentPerDay": 900000,
+      "capacity": 4,
+      "description": " Silver finish interior door handles. 160-amp alternator. Tire pressure monitoring system (TPMS). Cloth covered headliner.",
+      "availableAt": "2022-03-23T15:49:05.563Z"
+    },
+    {
+      "id": 5,
+      "uuid": "d97e0af5-2728-4ce3-ba7f-9d83a0837db6",
+      "model": "Navigator",
+      "image": "./images/car08.min.jpg",
+      "rentPerDay": 300000,
+      "capacity": 2,
+      "description": " XM satellite radio receiver -inc: 90 day trial subscription. Dual front illuminated visor vanity mirrors.",
+      "availableAt": "2022-03-23T15:49:05.563Z"
+    },
+    {
+      "id": 6,
+      "uuid": "0d5de078-a5fc-456b-9487-47eb450a01c6",
+      "image": "./images/car09.min.jpg",
+      "rentPerDay": 1000000,
+      "capacity": 6,
+      "description": " Rear reading & courtesy lamps. Zone body construction -inc: front/rear crumple zones, hood deformation point.",
+      "availableAt": "2022-03-23T15:49:05.563Z"
+    },
+    {
+      "id": 7,
+      "uuid": "6dfa349e-631c-46c0-a037-5c73902ff738",
+      "image": "./images/car10.min.jpg",
+      "rentPerDay": 300000,
+      "capacity": 6,
+      "description": " Cargo compartment lamp. Body color fascias w/bright insert. Front/rear stabilizer bars.",
+      "availableAt": "2022-03-23T15:49:05.563Z"
+    },
+    {
+      "id": 8,
+      "uuid": "803593fb-b857-4a01-adc4-651538217a04",     "model": "Malibu",
+      "image": "./images/car11.min.jpg",
+      "rentPerDay": 700000,
+      "capacity": 2,
+      "description": " Cloth covered headliner. Sentry Key theft deterrent system. Air conditioning w/in-cabin microfilter.",
+      "availableAt": "2022-03-23T15:49:05.563Z"
+    },
+    {
+      "id": 9,
+      "uuid": "e0a96736-a2d5-40ca-87de-64b59cac85d8",
+      "image": "./images/car12.min.jpg",
+      "rentPerDay": 800000,
+      "capacity": 4,
+      "description": " Multi-reflector halogen headlamps. Speed control.",
+      "availableAt": "2022-03-23T15:49:05.563Z"
+    },
+    {
+      "id": 10,
+      "uuid": "e39f2965-57da-4d8f-afdb-74f6c54e69f0",     "model": "Malibu",
+      "image": "./images/car13.min.jpg",
+      "rentPerDay": 900000,
+      "capacity": 6,
+      "description": " Leather-wrapped shift knob. Dual front illuminated visor vanity mirrors. Battery saver. Driver & front passenger map pockets.",
+      "availableAt": "2022-03-23T15:49:05.563Z"
+    },
+    {
+      "id": 11,
+      "uuid": "c18a5545-2ce2-4330-aa3b-1bbcf6247519",
+      "image": "./images/car14.min.jpg",
+      "rentPerDay": 700000,
+      "capacity": 2,
+      "description": " Front/rear side curtain airbags. Front & rear side curtain airbags. Body color front license plate brow. Rear body-color spoiler.",
+      "availableAt": "2022-03-23T15:49:05.563Z"
+    }
+]
