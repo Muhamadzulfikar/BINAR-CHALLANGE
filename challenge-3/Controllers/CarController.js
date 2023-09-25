@@ -6,6 +6,7 @@ class CarController extends Controller {
     index(req, res) {
         res.status(200).json(Car.all());
     }
+
     store(req, res) {
         req.body.id = Car.generateId();
 
@@ -16,11 +17,11 @@ class CarController extends Controller {
     }
 
     show(req, res){
-        res.status(200).json(Car.find(req.params.id));
+        res.status(200).json(Car.find(req.params.uuid));
     }
 
     update(req, res){
-        const car = Car.find(req.params.id);
+        const car = Car.find(req.params.uuid);
         const { image, rentPerDay, capacity, description, availableAt } = req.body;
         car.image = image;
         car.rentPerDay = rentPerDay;
@@ -32,13 +33,13 @@ class CarController extends Controller {
     }
 
     delete(req, res){
-        const car = Car.find(req.params.id);
+        const car = Car.find(req.params.uuid);
 
         if(car == null){
             return res.status(404).json({"message": "Data Not Found"});
         }
 
-        Car.delete(car);
+        const deletedCar = Car.whereNot('uuid', req.params.uuid);
 
         res.status(204).json(deletedCar);
     }

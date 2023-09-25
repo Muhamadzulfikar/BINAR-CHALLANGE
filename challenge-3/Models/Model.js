@@ -48,8 +48,8 @@ class Model {
     })
   }
 
-  find(id) {
-    return this.model.find((model) => model.id === Number(id))
+  find(uuid) {
+    return this.model.find((model) => model.uuid == uuid)
   }
 
   pluck(name, options) {

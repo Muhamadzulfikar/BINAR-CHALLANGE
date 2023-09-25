@@ -10,9 +10,9 @@ app.use(express.json());
 
 app.get("/cars", carController.index);
 app.post('/cars', CarMidlleware, carController.store)
-app.get("/cars/:id", carController.show);
-app.put('/cars/:id', CarMidlleware, carController.update);
-app.delete('/cars/:id', carController.delete)
+app.get("/cars/:uuid", carController.show);
+app.put('/cars/:uuid', carController.update);
+app.delete('/cars/:uuid', carController.delete)
 app.get('*', (req, res) => {
     res.status('200').json({"message": "successfully"})
 })
