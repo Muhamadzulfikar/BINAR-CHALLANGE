@@ -8,8 +8,19 @@ This is an Express.js application project that serves as an API for managing car
 
 **Server:** Node, Express
 
+## Dependencies
+```json
+   "dependencies": {
+    "express": "^4.18.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+  ```
 
-## Instalasi
+
+## Instalation
 
 Install challange-3 with npm
 
