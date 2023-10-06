@@ -1,25 +1,23 @@
 const Controller = require("./Controller");
 const { Car } = require('../models');
-const { where } = require("sequelize");
+const {v4: uuidv4} = require('uuid');
+
 
 class CarController extends Controller {
 
     async index(req, res) {
-        const getCar = await Car.findAll();
-        res.status(200).json(getCar);
+        try{
+            const getCar = await Car.findAll();
+            res.status(200).json(getCar);
+        } catch(err){
+            res.status(500).json(err);
+        }
     }
 
     async store(req, res) {
         try {
-            const postCar = await Car.create({
-                "name": req.body.name,
-                "type": req.body.type,
-                "capacity": req.body.capacity,
-                "image": req.body.image,
-                "rent_per_day": req.body.rent_per_day,
-                "description": req.body.description,
-                "available_at": req.body.available_at
-            });
+            req.body.id = uuidv4();
+            const postCar = await Car.create(req.body);
             res.status(201).json(postCar);
         } catch (err) {
             res.status(422).json(err);
@@ -27,27 +25,18 @@ class CarController extends Controller {
     }
 
     async show(req, res) {
-        const findCarById = await Car.findOne({
-            where: { id: req.params.id }
-        });
-        res.status(200).json(findCarById);
+        try {
+            const findCarById = await Car.findByPK(req.params.id);
+            res.status(200).json(findCarById);
+        } catch(err){
+            res.status(500).json(err);
+        }
     }
 
     async update(req, res) {
         try {
-            const getCarById = await Car.findOne({
-                where: {id: req.params.id}
-            });
-
-            const updateCarById = await Car.update({
-                "name": getCarById.name == null ? req.body.name : getCarById.name,
-                "type": getCarById.name == null ? req.body.type : getCarById.type,
-                "capacity": req.body.capacity,
-                "image": req.body.image,
-                "rent_per_day": req.body.rent_per_day,
-                "description": req.body.description,
-                "available_at": req.body.available_at
-            }, {
+            const bodyRequest = req.body;
+            const updateCarById = await Car.update(bodyRequest,{
                 where: { id: req.params.id },
             })
 

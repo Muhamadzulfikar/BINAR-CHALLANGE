@@ -22,7 +22,6 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM('small', 'medium', 'large'),
         validate: {
           isIn: ['small', 'medium', 'large'],
-          isLowerCase: true,
           notEmpty: true,
         }
       },
@@ -60,6 +59,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         validate: {
           notEmpty: true,
+          isDate: true,
         }
       },
     },
@@ -67,6 +67,7 @@ module.exports = (sequelize) => {
       sequelize,
       modelName: 'Car',
       tableName: 'cars',
+      timestamps: true,
     }
   );
 
