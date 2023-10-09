@@ -26,7 +26,7 @@ class CarController extends Controller {
 
     async show(req, res) {
         try {
-            const findCarById = await Car.findByPK(req.params.id);
+            const findCarById = await Car.findByPk(req.params.id);
             res.status(200).json(findCarById);
         } catch(err){
             res.status(500).json(err);
