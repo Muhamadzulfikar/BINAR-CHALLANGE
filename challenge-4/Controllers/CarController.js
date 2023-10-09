@@ -24,13 +24,8 @@ class CarController extends Controller {
         }
     }
 
-    async show(req, res) {
-        try {
-            const findCarById = await Car.findByPk(req.params.id);
-            res.status(200).json(findCarById);
-        } catch(err){
-            res.status(500).json(err);
-        }
+    show(req, res) {
+        res.status(200).json(req.car);
     }
 
     async update(req, res) {
