@@ -19,9 +19,9 @@ module.exports = (sequelize) => {
         }
       },
       type: {
-        type: DataTypes.ENUM('small', 'medium', 'large'),
+        type: DataTypes.ENUM('small','medium','large'),
         validate: {
-          isIn: ['small', 'medium', 'large'],
+          isIn: [['small','medium','large']],
           notEmpty: true,
         }
       },
