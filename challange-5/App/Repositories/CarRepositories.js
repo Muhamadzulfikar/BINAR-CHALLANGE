@@ -9,6 +9,10 @@ module.exports = {
         return Car.create(body);
     },
 
+    findCarById(id) {
+        return Car.findByPk(id);
+    },
+
     async updateCar(body, id) {
         const updatedCar = await Car.update(body, { where: { id: id }});
         const car = updatedCar == 1 && await Car.findOne({ where: { id: id } });

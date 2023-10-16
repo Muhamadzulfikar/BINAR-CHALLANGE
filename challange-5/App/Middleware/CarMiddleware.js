@@ -1,8 +1,8 @@
-const { Car } = require('../models');
+const CarService = require('../Services/CarService')
 
 const findAndSetFeedById = async (req, res, next) => {
     try {
-        const car = await Car.findByPk(req.params.id);
+        const car = await CarService.show(req.params.id);
         if (car) {
             req.car = car;
             next();

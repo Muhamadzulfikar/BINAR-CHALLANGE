@@ -110,16 +110,16 @@ const deleteCarById = async () => {
 }
 
 const apiCarTest = async () => {
-    // const getAllCarsTest = await getAllCars();
+    const getAllCarsTest = await getAllCars();
     const postCarTest = await postCar();
-    // const searchCarTest = await searchCarById();
-    // const updateCarTest = await updateCarById();
+    const searchCarTest = await searchCarById();
+    const updateCarTest = await updateCarById();
     const deleteCarTest = await deleteCarById();
 
-    // console.log(getAllCarsTest);
+    console.log(getAllCarsTest);
     console.log(postCarTest);
-    // console.log(searchCarTest);
-    // console.log(updateCarTest);
+    console.log(searchCarTest);
+    console.log(updateCarTest);
     console.log(deleteCarTest);
 }
 

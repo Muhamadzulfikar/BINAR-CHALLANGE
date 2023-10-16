@@ -16,4 +16,8 @@ module.exports = {
     delete(id) {
         return CarRepositories.deleteCar(id);
     },
+
+    show(id) {
+        return CarRepositories.findCarById(id);
+    }
 };
