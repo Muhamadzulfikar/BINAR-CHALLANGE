@@ -1,13 +1,12 @@
 const Controller = require("./Controller");
-const { Car } = require('../models');
 const {v4: uuidv4} = require('uuid');
-
+const CarService = require('../Services/CarService');
 
 class CarController extends Controller {
 
     async index(req, res) {
         try{
-            const getCar = await Car.findAll();
+            const getCar = await CarService.list();
             res.status(200).json(getCar);
         } catch(err){
             res.status(500).json(err);
@@ -17,7 +16,7 @@ class CarController extends Controller {
     async store(req, res) {
         try {
             req.body.id = uuidv4();
-            const postCar = await Car.create(req.body);
+            const postCar = await CarService.create(req.body);
             res.status(201).json(postCar);
         } catch (err) {
             res.status(422).json(err);
@@ -31,15 +30,8 @@ class CarController extends Controller {
     async update(req, res) {
         try {
             const bodyRequest = req.body;
-            const updateCarById = await Car.update(bodyRequest,{
-                where: { id: req.params.id },
-            })
-
-            const getUpdatedCarById = updateCarById == 1 ? await Car.findOne({
-                where: { id: req.params.id }
-            }) : null;
-
-            res.status(201).json(getUpdatedCarById);
+            const updateCar = await CarService.update(bodyRequest, req.params.id)
+            res.status(201).json(updateCar);
         } catch (err) {
             res.status(422).json(err);
         }
@@ -47,10 +39,7 @@ class CarController extends Controller {
 
     async delete(req, res) {
         try {
-            const deleteCarById = await Car.destroy({
-                where: { id: req.params.id }
-            });
-        
+            const deleteCarById = await CarService.delete(req.params.id);
             deleteCarById == 1 ? res.status(200).json({"message": "Delete Successfully"}) : null; 
         } catch (err) {
             res.status(422).json(err);
