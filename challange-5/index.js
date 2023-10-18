@@ -1,5 +1,6 @@
 const express = require('express');
 const carController = require('./App/Controllers/CarController');
+const userController = require('./App/Controllers/UserController');
 const findAndSetFeedById = require('./App/Middleware/CarMiddleware');
 
 const port = process.env.PORT || 8000;
@@ -7,6 +8,7 @@ const app = express();
 
 app.use(express.json());
 
+app.post("/login/super-admin", userController.superAdminLogin)
 app.get("/cars", carController.index);
 app.post('/cars', carController.store);
 app.get("/cars/:id", findAndSetFeedById, carController.show);

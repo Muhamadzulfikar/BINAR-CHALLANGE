@@ -1,6 +1,8 @@
 const axios = require('axios');
 const { Car } = require('../models');
 const {v4: uuidv4} = require('uuid');
+const bcrypt = require('bcryptjs');
+const { stringify } = require('uuid');
 
 const apiUrl = 'http://localhost:8000';
 
@@ -10,7 +12,7 @@ const getAllCars = async () => {
         const response = await axios.get(`${apiUrl}/cars`);
         const cars = await Car.findAll();
     
-        if (JSON.stringify(response.data) === JSON.stringify(cars)) {
+        if (JSON.stringify(response.data.data) === JSON.stringify(cars)) {
             return 'Passed get list cars test';
         } else {
             return 'Not passed get list cars test';
@@ -38,7 +40,7 @@ const postCar = async () => {
             where: {name: 'Dummy Data'}
         });
 
-        if(response.data.id === findCarByName.id){
+        if(response.data.data.id === findCarByName.id){
             return 'Passed post car test';
         } else {
             return 'Not passed post car test';
@@ -57,7 +59,7 @@ const searchCarById = async () => {
     
         const response = await axios.get(`${apiUrl}/cars/${id}`);
     
-        if(JSON.stringify(response.data) === JSON.stringify(dummyData)){
+        if(JSON.stringify(response.data.data) === JSON.stringify(dummyData)){
             return 'Passed search car by id test';
         } else {
             return 'Not passed search car by id test';
@@ -80,7 +82,7 @@ const updateCarById = async () => {
 
         const response = await axios.put(`${apiUrl}/cars/${id}`, updatedDummyData);
 
-        if(response.data.type == 'medium'){
+        if(response.data.data.type == 'medium'){
             return 'Passed update car by id';
         } else {
             return 'Not passed update car by id';
@@ -109,18 +111,54 @@ const deleteCarById = async () => {
     }
 }
 
-const apiCarTest = async () => {
-    const getAllCarsTest = await getAllCars();
-    const postCarTest = await postCar();
-    const searchCarTest = await searchCarById();
-    const updateCarTest = await updateCarById();
-    const deleteCarTest = await deleteCarById();
+const encryptPassword = (password) => {
+    return new Promise((resolve, rejected) => {
+        bcrypt.hash(password, 10, (err, encryptPassword) => {
+            if (!!err){
+                rejected(err);
+                return;
+            }
 
-    console.log(getAllCarsTest);
-    console.log(postCarTest);
-    console.log(searchCarTest);
-    console.log(updateCarTest);
-    console.log(deleteCarTest);
+            resolve(encryptPassword);
+        })
+    })
 }
 
-apiCarTest();
+const decryptPassword = (encryptPassword, password) => {
+    return new Promise((resolve, rejected) => {
+        bcrypt.compare(password, encryptPassword, (err, isPasswordCorrect) => {
+            if (!!err){
+                rejected(err);
+                return;
+            }
+
+            resolve(isPasswordCorrect);
+        })
+    })
+}
+
+const test = async (password, encryptedPassword) => {
+    const result = await bcrypt.compare(password, encryptedPassword);
+    return console.log(result);
+}
+
+const length = "$2a$10$6M5UvCPScDXWAzybSX3iie1ZTe5gntSAGRGP8sakCXXysjlYQbtci";
+console.log(length.length)
+
+encryptPassword('admin123').then(result => console.log(result)).catch(err => console.log(err));
+// decryptPassword("$2a$10$sX/fcdIUp7TNZV6lxKkQ8elQHh/S.0EMomtlbmlABNJnmPUFDech6", "admin123").then(result => console.log(result)).catch(err => console.log(err));
+// const apiCarTest = async () => {
+//     const getAllCarsTest = await getAllCars();
+//     const postCarTest = await postCar();
+//     const searchCarTest = await searchCarById();
+//     const updateCarTest = await updateCarById();
+//     const deleteCarTest = await deleteCarById();
+
+//     console.log(getAllCarsTest);
+//     console.log(postCarTest);
+//     console.log(searchCarTest);
+//     console.log(updateCarTest);
+//     console.log(deleteCarTest);
+// }
+
+// apiCarTest();
