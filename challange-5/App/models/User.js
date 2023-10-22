@@ -17,16 +17,25 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       validate: {
-        min: 5,
-        max: 255,
-        notEmpty: true,
+        len: {
+          args: [5, 255],
+          msg: 'name must be between 5 and 255 characters'
+        },
+        notEmpty: {
+          msg: 'name must not be empty'
+        },
       }
     },
     email:{
       type: DataTypes.STRING,
+      unique: true,
       validate: {
-        isEmail: true,
-        notEmpty: true,
+        isEmail: {
+          msg: "Email is invalid"
+        },
+        notEmpty: {
+          msg: "Email must not be empty"
+        },
       },
     },
     password:{
@@ -34,14 +43,20 @@ module.exports = (sequelize) => {
       validate: {
         min: 60,
         max: 60,
-        notEmpty: true,
+        notEmpty: {
+          msg:"password must not be empty"
+        },
       },
     },
     phone:{
       type: DataTypes.STRING,
       validate: {
-        isNumeric: true,
-        notEmpty: true,
+        len: {
+          args: [10, 13]
+        },
+        notEmpty: {
+          msg: "Phone number must be not empty"
+        },
       },
     },
     role:{
@@ -50,6 +65,7 @@ module.exports = (sequelize) => {
         isIn:[['user','admin','super admin']],
         notEmpty: true,
       },
+      defaultValue: 'user',
     },
   }, {
     sequelize,
