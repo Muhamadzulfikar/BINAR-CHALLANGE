@@ -19,8 +19,9 @@ module.exports = (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING,
         validate: {
-          min:5,
-          max:255,
+          len:{
+            args: [5, 255],
+          },
           notEmpty:true,
         }
       },
@@ -57,8 +58,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           notEmpty: true,
-          min:5,
-          max:255,
+          len:{
+            args: [5, 255],
+          },
         }
       },
       available_at: {
