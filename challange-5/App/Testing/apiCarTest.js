@@ -1,8 +1,8 @@
 const axios = require('axios');
-const { Car } = require('../models');
+const { Car, Setting } = require('../models');
 const {v4: uuidv4} = require('uuid');
 const bcrypt = require('bcryptjs');
-const { stringify } = require('uuid');
+const SettingRepositories = require('../Repositories/SettingRepositories');
 
 const apiUrl = 'http://localhost:8000';
 
@@ -137,16 +137,8 @@ const decryptPassword = (encryptPassword, password) => {
     })
 }
 
-const test = async (password, encryptedPassword) => {
-    const result = await bcrypt.compare(password, encryptedPassword);
-    return console.log(result);
-}
+SettingRepositories.config('jwt_secret_key').then(result => console.log(result));
 
-const length = "$2a$10$6M5UvCPScDXWAzybSX3iie1ZTe5gntSAGRGP8sakCXXysjlYQbtci";
-console.log(length.length)
-
-encryptPassword('admin123').then(result => console.log(result)).catch(err => console.log(err));
-// decryptPassword("$2a$10$sX/fcdIUp7TNZV6lxKkQ8elQHh/S.0EMomtlbmlABNJnmPUFDech6", "admin123").then(result => console.log(result)).catch(err => console.log(err));
 // const apiCarTest = async () => {
 //     const getAllCarsTest = await getAllCars();
 //     const postCarTest = await postCar();
