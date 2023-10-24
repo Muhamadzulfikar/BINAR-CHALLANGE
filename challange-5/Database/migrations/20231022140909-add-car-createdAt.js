@@ -6,7 +6,6 @@ module.exports = {
     await queryInterface.addColumn('cars', 'created_by', {
       type: Sequelize.UUID,
       allowNull: false,
-      defaultValue: '14305f14-bbb4-449b-b854-40021d3ea497',
       references: {
         model: "users",
         key: "id",
