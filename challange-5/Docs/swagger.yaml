@@ -4,24 +4,82 @@ info:
   description: |-
     This api is used to manage car data, but only admin and super admin are allowed to perform crud operations on this api. This api uses authentication using json web tokens, where users are asked to register or login first before using this api.
     email: apiteam@swagger.io
-  version: 0.0.0
+  version: 0.0.1
 servers:
   - url: http://localhost:8000
 tags:
-  - name: cars
-    description: api to manage car data
   - name: user
     description: api to authenticate
+  - name: cars
+    description: api to manage cars
+  - name: cars/{id}
+    description: api manage car with id
 paths:
+  /register:
+    post:
+      tags:
+        - user
+      summary: Register a new user
+      description: Register a new user
+      operationId: register
+      requestBody:
+        description: Register a new user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '201':
+          description: Successful Register User
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'          
+        '422':
+          description: Cannot Register user
+      security:
+        - cars_auth:
+            - write:user
+            - read:user
+            
+  /login:
+    post:
+      tags:
+        - user
+      summary: Login user
+      description: Login user
+      operationId: login
+      requestBody:
+        description: Login user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '200':
+          description: Successful Login
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'          
+        '401':
+          description: Unauthorize
+      security:
+        - cars_auth:
+            - write:user
+            - read:user
+
   /cars:
     post:
       tags:
         - cars
-      summary: Update an existing cars
-      description: Update an existing cars by Id
-      operationId: updateCars
+      summary: Store Car In Database
+      description: Store Car In Database
+      operationId: storeCars
       requestBody:
-        description: Update an existent cars in the store
+        description: Store Car In Database
         content:
           application/json:
             schema:
@@ -40,14 +98,44 @@ paths:
         - cars_auth:
             - write:cars
             - read:cars
-    put:
+            
+    get:
       tags:
         - cars
-      summary: Add a new cars to the database
-      description: Add a new cars to the database
-      operationId: add cars
+      summary: Get All Cars Data
+      description: Get All Cars Data
+      operationId: getCars
+      responses:
+        '200':
+          description: Successful get
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cars'
+        '500':
+          description: Internal Server Error
+      security:
+        - cars_auth:
+            - write:cars
+            - read:cars
+      
+  /cars/{id}:
+    put:
+      parameters:
+        - name: id
+          in: path
+          description: ID Mobil
+          required: true
+          schema:
+            type: string
+            format: uuid
+      tags:
+        - cars/{id}
+      summary: Update an Existing Car
+      description: Update an Existing Car
+      operationId: updateCars
       requestBody:
-        description: Create a new cars in the database
+        description: update an Existing Car
         content:
           application/json:
             schema:
@@ -55,39 +143,74 @@ paths:
         required: true
       responses:
         '201':
-          description: Successful Create
+          description: Successful Update Car
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Cars'          
         '422':
-          description: Invalid input
+          description: Cannot Update Car
       security:
         - cars_auth:
-            - write:pets
-            - read:pets
-            
+            - write:cars
+            - read:cars
     get:
+      parameters:
+        - name: id
+          in: path
+          description: ID Mobil
+          required: true
+          schema:
+            type: string
+            format: uuid
       tags:
-        - cars
-      summary: Add a new cars to the database
-      description: Add a new cars to the database
-      operationId: get cars
+        - cars/{id}
+      summary: Get Car With ID
+      description: Get Car With ID
+      operationId: getCarById
+      responses:
+        '200':
+          description: Get Car By ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cars'          
+        '404':
+          description: Car With ID Not Found 
+        '500':
+          description: "Internal server Error"
+      security:
+        - cars_auth:
+            - write:cars
+            - read:cars
+            
+    delete:
+      parameters:
+        - name: id
+          in: path
+          description: ID Mobil
+          required: true
+          schema:
+            type: string
+            format: uuid
+      tags:
+        - cars/{id}
+      summary: Delete an Existing Car
+      description: Update an Existing Car
+      operationId: deleteCars
       responses:
         '201':
-          description: Successful Create
+          description: Successful Delete Car
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Cars'          
         '422':
-          description: Invalid input
+          description: Cannot Delete Car
       security:
         - cars_auth:
-            - write:pets
-            - read:pets
-      
- 
+            - write:cars
+            - read:cars
 components:
   schemas:
     User:
@@ -127,17 +250,32 @@ components:
       type: object
       properties:
         id:
+          type: string
+          format: uuid
+          example: "6418b641-df5b-4719-a7ad-55686af0bc06"
+        name:
+          type: string
+          format: string
+          example: "Mobil B"
+        type:
+          type: string
+          example: "medium"
+        image:
+          type: string
+          example: https://example.com/image2.jpg
+        capacity:
           type: integer
-          format: int64
-          example: 10
-        zul:
+          example: 5
+        rent_per_day:
           type: integer
-        photoUrls:
+          example: 100000
+        description:
           type: string
-        tags:
+          example: "Mobil sedang dengan kenyamanan tinggi."
+        available_at:
           type: string
-        status:
-          type: string
+          format: date
+          example: "2023-10-10T08:00:00Z"
   requestBodies:
     cars:
       description: Pet object that needs to be added to the store
@@ -156,9 +294,5 @@ components:
   securitySchemes:
     cars_auth:
       type: http
-      flows:
-        implicit:
-          authorizationUrl: http://localhost:8000/login
-          scopes:
-            write:cars: modify cars in your account
-            read:cars: read your cars
+      scheme: bearer
+      bearerFormat: JWT
