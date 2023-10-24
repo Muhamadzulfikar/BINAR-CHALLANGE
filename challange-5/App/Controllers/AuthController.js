@@ -16,6 +16,9 @@ module.exports = {
     async userRegister(req, res) {
         try {
             req.body.id = uuidv4();
+            if(req.user){
+                req.body.role = 'admin';
+            }
             const register = await AuthService.userRegister(req.body);
             res.status(201).json({
                 status: 'Ok',
