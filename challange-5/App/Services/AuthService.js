@@ -9,7 +9,7 @@ module.exports = {
         const encryptedPassword = user.password;
         const isPassword = await bcrypt.compare(password, encryptedPassword);
 
-        if(!isPassword){
+        if (!isPassword) {
             ErrorHandling.unauthorized('Password not match');
         }
 
@@ -56,6 +56,7 @@ module.exports = {
     },
 
     async authorize(bearerToken) {
+        !bearerToken && ErrorHandling.unauthorized('Token must be not empty');
         const token = bearerToken.split("Bearer ")[1];
         const { id } = token && await this.validateToken(token);
         const user = id && AuthRepositories.findUserById(id);
