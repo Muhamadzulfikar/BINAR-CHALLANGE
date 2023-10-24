@@ -60,6 +60,6 @@ module.exports = {
 
     async deleteCar(id, userId) {
         await Car.destroy({ where: { id: id } });
-        return Car.update({ delete_by: userId }, { where: { id: id } })
+        return Car.update({ delete_by: userId }, { where: { id: id }, returning:true, paranoid:false })
     },
 }
