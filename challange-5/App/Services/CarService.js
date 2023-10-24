@@ -5,16 +5,16 @@ module.exports = {
         return CarRepositories.getAllCar();
     },
 
-    create(body) {
-        return CarRepositories.storeCar(body);
+    create(body, userId) {
+        return CarRepositories.storeCar({...body, created_by:userId});
     },
 
-    update(body, id) {
-        return CarRepositories.updateCar(body, id);
+    update(body, userId, id) {
+        return CarRepositories.updateCar({...body, updated_by:userId}, id);
     },
 
-    delete(id) {
-        return CarRepositories.deleteCar(id);
+    delete(id, userId) {
+        return CarRepositories.deleteCar(id, userId);
     },
 
     show(id) {
