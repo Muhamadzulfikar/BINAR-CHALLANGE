@@ -1,6 +1,8 @@
 const CarService = require('../Services/CarService')
+const ErrorHandling = require("../Error/ErrorHandling");
+const responseError = require("../Error/responseError");
 
-const findAndSetFeedById = async (req, res, next) => {
+exports.findAndSetFeedById = async (req, res, next) => {
     try {
         const car = await CarService.show(req.params.id);
         if (car) {
@@ -14,5 +16,19 @@ const findAndSetFeedById = async (req, res, next) => {
     }
 }
 
+exports.validateCars = (req, res, next) => {
+    try {
+        const { name, type, capacity, image, rent_per_day, description, available_at } = req.body;
+        !name && ErrorHandling.badRequest('Name must not be empty');
+        !type && ErrorHandling.badRequest('Type must not be empty');
+        !capacity && ErrorHandling.badRequest('Capacity must not be empty');
+        !image && ErrorHandling.badRequest('Image must not be empty');
+        !rent_per_day && ErrorHandling.badRequest('Rent Per Day must not be empty');
+        !description && ErrorHandling.badRequest('Description must not be empty');
+        !available_at && ErrorHandling.badRequest('Available At must not be empty');
 
-module.exports = findAndSetFeedById;
+        next();
+    } catch (error) {
+        responseError(res, error);
+    }
+}
