@@ -10,7 +10,20 @@ module.exports = (sequelize) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.hasMany(models.Car, {
+        foreignKey: 'created_by',
+        as: 'created'
+      });
+
+      this.hasMany(models.Car, {
+        foreignKey: 'updated_by',
+        as: 'updated'
+      });
+
+      this.hasMany(models.Car, {
+        foreignKey: 'deleted_by',
+        as: 'deleted',
+      });
     }
   }
   User.init({
@@ -41,8 +54,9 @@ module.exports = (sequelize) => {
     password:{
       type: DataTypes.CHAR(60),
       validate: {
-        min: 60,
-        max: 60,
+        len:{
+          args: [60, 60]
+        },
         notEmpty: {
           msg:"password must not be empty"
         },

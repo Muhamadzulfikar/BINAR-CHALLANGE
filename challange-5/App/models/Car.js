@@ -4,13 +4,21 @@ const {v4: uuidv4} = require('uuid');
 
 module.exports = (sequelize, DataTypes) => {
   class Car extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
      static associate(models) {
-      // define association here
+      this.belongsTo(models.User,{
+        foreignKey: 'created_by',
+        as: 'created'
+      });
+
+      this.belongsTo(models.User, {
+        foreignKey: 'updated_by',
+        as: 'updated',
+      });
+
+      this.belongsTo(models.User, {
+        foreignKey: 'deleted_by',
+        as: 'deleted',
+      })
     }
   }
 
@@ -75,6 +83,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'Car',
       tableName: 'cars',
+      paranoid: true,
       timestamps: true,
     }
   );
