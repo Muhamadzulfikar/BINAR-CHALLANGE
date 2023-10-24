@@ -39,12 +39,16 @@ module.exports = {
 
     async authorize(req, res, next) {
         try {
-            const user = AuthService.authorize(req.headers.authorization);
+            const user = await AuthService.authorize(req.headers.authorization);
             !user && ErrorHandling.unauthorized('User Not Found');
             req.user = user;
             next()
         } catch (error) {
-            responseError(res, error);
+            error.code ? responseError(res, error) : res.status('401').json({
+                code: '403',
+                status: 'Unauthorize',
+                message: error.message,
+            })
         }
     },
 
