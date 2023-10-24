@@ -2,7 +2,7 @@ const express = require('express');
 const AuthController = require('./App/Controllers/AuthController');
 const carController = require('./App/Controllers/CarController');
 const AuthMiddleware = require('./App/Middleware/AuthMiddleware');
-const findAndSetFeedById = require('./App/Middleware/CarMiddleware');
+const {findAndSetFeedById, validateCars} = require('./App/Middleware/CarMiddleware');
 
 const port = process.env.PORT || 8000;
 const app = express();
@@ -11,11 +11,12 @@ app.use(express.json());
 
 app.post("/login", AuthMiddleware.isUserHasRegister, AuthController.userLogin);
 app.post("/register",  AuthMiddleware.validateBodyRequest, AuthMiddleware.isUserHasNotRegister, AuthController.userRegister);
+app.post("/register/admin", AuthMiddleware.isUserHasNotRegister, AuthMiddleware.authorize, AuthMiddleware.isSuperAdmin, AuthController.userRegister)
 
 app.get("/cars", AuthMiddleware.authorize, carController.index);
 app.get("/cars/:id", AuthMiddleware.authorize, findAndSetFeedById, carController.show);
 
-app.post('/cars', AuthMiddleware.authorize, AuthMiddleware.isSuperAdminAndAdmin, carController.store);
+app.post('/cars', AuthMiddleware.authorize, AuthMiddleware.isSuperAdminAndAdmin, validateCars, carController.store);
 app.delete("/cars/:id", AuthMiddleware.authorize, AuthMiddleware.isSuperAdminAndAdmin, carController.delete);
 app.put("/cars/:id", AuthMiddleware.authorize, AuthMiddleware.isSuperAdminAndAdmin, carController.update);
 
