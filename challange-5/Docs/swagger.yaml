@@ -1,0 +1,164 @@
+openapi: 3.0.3
+info:
+  title: Swagger Cars - OpenAPI 3.0
+  description: |-
+    This api is used to manage car data, but only admin and super admin are allowed to perform crud operations on this api. This api uses authentication using json web tokens, where users are asked to register or login first before using this api.
+    email: apiteam@swagger.io
+  version: 0.0.0
+servers:
+  - url: http://localhost:8000
+tags:
+  - name: cars
+    description: api to manage car data
+  - name: user
+    description: api to authenticate
+paths:
+  /cars:
+    post:
+      tags:
+        - cars
+      summary: Update an existing cars
+      description: Update an existing cars by Id
+      operationId: updateCars
+      requestBody:
+        description: Update an existent cars in the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cars'
+        required: true
+      responses:
+        '201':
+          description: Successful Update Cars
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cars'          
+        '422':
+          description: Invalid ID supplied
+      security:
+        - cars_auth:
+            - write:cars
+            - read:cars
+    put:
+      tags:
+        - cars
+      summary: Add a new cars to the database
+      description: Add a new cars to the database
+      operationId: add cars
+      requestBody:
+        description: Create a new cars in the database
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cars'
+        required: true
+      responses:
+        '201':
+          description: Successful Create
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cars'          
+        '422':
+          description: Invalid input
+      security:
+        - cars_auth:
+            - write:pets
+            - read:pets
+            
+    get:
+      tags:
+        - cars
+      summary: Add a new cars to the database
+      description: Add a new cars to the database
+      operationId: get cars
+      responses:
+        '201':
+          description: Successful Create
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cars'          
+        '422':
+          description: Invalid input
+      security:
+        - cars_auth:
+            - write:pets
+            - read:pets
+      
+ 
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        username:
+          type: string
+          example: theUser
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: James
+        email:
+          type: string
+          example: john@email.com
+        password:
+          type: string
+          example: '12345'
+        phone:
+          type: string
+          example: '12345'
+        userStatus:
+          type: integer
+          description: User Status
+          format: int32
+          example: 1
+    Cars:
+      required:
+        - name
+        - photoUrls
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        zul:
+          type: integer
+        photoUrls:
+          type: string
+        tags:
+          type: string
+        status:
+          type: string
+  requestBodies:
+    cars:
+      description: Pet object that needs to be added to the store
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Cars'
+    UserArray:
+      description: List of user object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
+  securitySchemes:
+    cars_auth:
+      type: http
+      flows:
+        implicit:
+          authorizationUrl: http://localhost:8000/login
+          scopes:
+            write:cars: modify cars in your account
+            read:cars: read your cars
