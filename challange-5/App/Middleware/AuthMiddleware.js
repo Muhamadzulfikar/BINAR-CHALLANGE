@@ -10,12 +10,25 @@ module.exports = {
             !email && ErrorHandling.unauthorized('Email must not be empty');
             !password && ErrorHandling.unauthorized('Password must not be empty');
             !phone && ErrorHandling.unauthorized('Phone number must not be empty');
-
             next();
         } catch (error) {
             responseError(res, error);
         }
     },
+
+    validateBodyLogin(req, res, next) {
+        try {
+            const {email, password} = req.body;
+            !email && ErrorHandling.unauthorized('Email must not be empty');
+            !password && ErrorHandling.unauthorized('Password must not be empty');
+            email == "" && ErrorHandling.unauthorized('Email must not be empty');
+            password == "" && ErrorHandling.unauthorized('Password must not be empty');
+            next();
+        } catch (error) {
+            responseError(res, error);
+        }
+    },
+
     async isUserHasNotRegister(req, res, next) {
         try {
             const user = await AuthService.findUser(req.body);

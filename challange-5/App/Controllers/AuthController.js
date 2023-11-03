@@ -1,6 +1,6 @@
-const Controller = require("./Controller");
 const { v4: uuidv4 } = require('uuid');
 const AuthService = require("../Services/AuthService");
+const responseError = require("../Error/responseError");
 
 module.exports = {
     async userLogin(req, res) {
@@ -9,7 +9,7 @@ module.exports = {
             const login = await AuthService.userLogin(body.password, user);
             res.status(200).json(login);
         } catch (error) {
-            res.status(error.code).json(error.message)
+            responseError(res, error);
         }
     },
 
