@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
+    const token = localStorage.getItem('bearerToken')
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary navbar-container">
             <div className="container-fluid navbar-padding">
@@ -25,7 +26,7 @@ const Navbar = () => {
                             <a className="nav-link text-dark" aria-current="page" href="#">FAQ</a>
                         </li>
                         <li className="nav-item me-3 pe-3">
-                            <Link to='register' className='btn nav-register-button text-white'>Mulai Sewa Mobil</Link>
+                            <Link to='/login' className='btn nav-register-button text-white'>{token ? 'Keluar' : 'Masuk'}</Link>
                         </li>
                     </ul>
                 </div>
