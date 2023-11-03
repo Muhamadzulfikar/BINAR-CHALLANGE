@@ -1,0 +1,335 @@
+body {
+    font-family: Helvetica;
+    padding-bottom: 6.25rem;
+}
+
+.navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #F1F3FF;
+    z-index: 99;
+}
+
+.navbar-padding{
+    padding: 0rem 1rem;
+}
+
+.nav-register-button {
+    background-color: #5CB85F;
+}
+
+.hero-container {
+    background-color: #F1F3FF;
+    padding-top: 5.8rem;
+}
+
+.hero-container-left-side {
+    padding-left: 2rem;
+}
+
+.hero-section-sub-header {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 300;
+}
+
+.hero-button {
+    background-color: #5CB85F;
+}
+
+.car-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.service-container {
+    width: 100%;
+    margin: 6.25rem auto;
+    padding: 0rem 1rem;
+}
+
+.service-container-image{
+    width: 252px;
+    height: 228px;
+    object-fit: cover;
+    margin-left: 40px;
+}
+
+.service-container-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2.25rem;
+    margin-top: 1rem;
+}
+
+.service-container-sub-heading {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 300;
+}
+
+.service-container-sub-heading p {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.why-us {
+    margin-top: 3rem;
+    padding: 0rem 1rem;
+}
+
+.why-us-heading {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    text-align: center;
+}
+
+.why-us-sub-heading {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: center;
+}
+
+.why-us-list-item {
+    margin-top: 2.5rem;
+}
+
+.why-us-list-item-card {
+    width: 100%;
+    margin-right: 2rem;
+}
+
+.testimonial-container {
+    margin-top: 3rem;
+}
+
+.testimonial-heading {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+}
+
+.testimonial-sub-heading {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-top: 1rem;
+}
+
+.testimonial-carousel {
+    margin-top: 2.5rem;
+    padding-top: 4.3125rem;
+    padding-bottom: 4.3125rem;
+    background-color: #F1F3FF;
+}
+
+.testimonial-carousel-image {
+    width: 4.38875rem;
+    height: 5rem;
+    background-size: cover;
+    margin-right: 4.38875rem;
+}
+
+.testimonial-carousel-content {
+    width: 25.9375rem;
+}
+
+.testimonial-carousel-content p {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-top: 0.5rem;
+    background-color: #F1F3FF;
+}
+
+.banner-container {
+    margin-top: 3rem;
+    background-color: #0D28A6;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.banner-button {
+    background-color: #5CB85F;
+    margin-top: 3.72rem;
+}
+
+.faq-container {
+    margin-top: 3rem;
+    padding: 0rem 2rem;
+}
+
+.faq-heading {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    text-align: center;
+}
+
+.faq-sub-heading {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.footer-container {
+    margin-top: 3rem;
+    padding: 0rem 2rem;
+}
+
+.footer-address-container p {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-top: 1rem;
+    width: 16.75rem;
+}
+
+.footer-navigation-container p {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-top: 1rem;
+}
+
+.footer-social-media-container p {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-top: 1rem;
+}
+
+.footer-social-media-icon img {
+    margin-right: 1rem;
+}
+
+.footer-copyright-container p {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin-top: 1rem;
+}
+
+.footer-copyright-rectangle {
+    width: 6.25rem;
+    height: 2.125rem;
+    background-color: #0D28A6;
+}
+
+@media (min-width: 768px) {
+    .navbar-padding{
+        padding: 0rem 7.5rem;
+    }
+
+    .hero-container {
+        padding-top: 5.3125rem;
+        width: 100%;
+    }
+
+    .height-hero-container{
+        height: 13.5rem;
+    }
+
+    .hero-container-left-side {
+        padding-left: 8.5rem;
+    }
+
+    .hero-section-header {
+        font-size: 2.25rem;
+        line-height: 3.375rem;
+        margin-bottom: 1rem;
+        width: 35.5rem;
+    }
+
+    .service-container {
+        width: 64.1875rem;
+        margin: 6.25rem auto;
+        padding: 0rem;
+    }
+
+    .service-container-image{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin-left: 0px;
+    }
+
+    .service-container-heading {
+        margin-top: 0rem;
+    }
+
+    .why-us {
+        margin-top: 6.25rem;
+        margin-left: 8.5rem;
+        margin-right: 8.5rem;
+        padding: 0rem;
+    }
+
+    .why-us-list-item-card {
+        width: 16.75rem;
+        margin-right: 2rem;
+    }
+
+    .why-us-heading {
+        text-align: left;
+    }
+
+    .why-us-sub-heading {
+        text-align: left;
+    }
+
+    .testimonial-container {
+        width: 52rem;
+        margin-top: 6.25rem;
+    }
+
+    .banner-container {
+        margin-top: 9.75rem;
+        width: 73rem;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    .banner-heading {
+        font-size: 2.25rem;
+        line-height: 3.375rem;
+    }
+
+    .banner-sub-heading {
+        width: 29.25rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        margin-top: 1rem;
+    }
+
+    .faq-container{
+        margin-top: 6.25rem;
+        padding-left: 6.125rem;
+        padding-right: 0rem;
+    }
+
+    .footer-container{
+        margin-top: 9.375rem;
+        padding-left: 6.125rem;
+        padding-right: 0rem;
+    }
+
+    .filter-container{
+        width: 65.4375rem;
+        top: 26.875rem;
+        left: 11.25rem;
+    }
+
+    .filter-container-result{
+        top: 9.5rem;
+        width: 65.4375rem;
+        left: 11.25rem;
+    }
+
+    .list-car-container{
+        margin-top: 12rem;
+    }
+
+    .description-car{
+        height: 60px;
+    }
+}
